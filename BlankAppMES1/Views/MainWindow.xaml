@@ -1,0 +1,84 @@
+﻿<UserControl
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="BlankAppMES1.Views.MainWindow"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+       Height="350" Width="525" >
+    <Grid Margin="0,0,0,-101">
+        <!--Grid解释-->
+        
+        <StackPanel Orientation="Vertical" Margin="0,0,0,-43">
+
+            <DataGrid ItemsSource="{Binding Path=People}" AutoGenerateColumns="True" />
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="订单类型"></Label>
+                <TextBox  Width="100" Text="{Binding Path=person.OrderType1}" Height="20" HorizontalAlignment="Left" VerticalAlignment="Stretch"></TextBox>
+                <Label Content="订单数量"></Label>
+                <ComboBox Text="{Binding Path=person.OrderNum1}">
+                    <ComboBoxItem IsSelected="True" Content="1"></ComboBoxItem>
+                    <ComboBoxItem Content="2"></ComboBoxItem>
+                    <ComboBoxItem Content="3"></ComboBoxItem>
+                    <ComboBoxItem Content="4"></ComboBoxItem>
+                    <ComboBoxItem Content="5"></ComboBoxItem>
+                    <ComboBoxItem Content="6"></ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="上料类型"></Label>
+                <ComboBox Text="{Binding Path=person.FeedingType1}">
+                    <ComboBoxItem IsSelected="True" Content="加工成品托盘A1"></ComboBoxItem>
+                    <ComboBoxItem Content="加工成品托盘A2"></ComboBoxItem>
+                    <ComboBoxItem Content="加工成品托盘A3"></ComboBoxItem>
+                    <ComboBoxItem Content="加工成品托盘A4"></ComboBoxItem>
+                    <ComboBoxItem Content="加工成品托盘A5"></ComboBoxItem>
+                    <ComboBoxItem Content="加工成品托盘A6"></ComboBoxItem>
+                </ComboBox>
+                <Label Content="上料参数"></Label>
+                <TextBox Width="100" Height="20" Text="{Binding Path=person.TrayParameter1}" HorizontalAlignment="Left" VerticalAlignment="Stretch"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="下料类型"></Label>
+                <ComboBox Text="{Binding Path=person.BlankingType1}">
+                    <ComboBoxItem IsSelected="True" Content="加工成品托盘A1"></ComboBoxItem>
+                    <ComboBoxItem Content="加工成品托盘A2"></ComboBoxItem>
+                    <ComboBoxItem Content="加工成品托盘A3"></ComboBoxItem>
+                    <ComboBoxItem Content="加工成品托盘A4"></ComboBoxItem>
+                    <ComboBoxItem Content="加工成品托盘A5"></ComboBoxItem>
+                    <ComboBoxItem Content="加工成品托盘A6"></ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <Button Content="添加" Command="{Binding Path=AddCmd}" Width="100" Height="30" Margin="30">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#336633"></Setter>
+                                <Setter Property="FontSize" Value="18"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"></ContentPresenter>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Background" Value="Green"></Setter>
+                        <Setter Property="Foreground" Value="White"></Setter>
+                        <Setter Property="Cursor" Value="Hand"></Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </Grid>
+
+</UserControl>
+
